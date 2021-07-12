@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Edit samples/settings.py and add APP_NAME = 'DJ4E Samples' or similar -->
+    <title>DJ4E Sample Implementations</title>
+
+<meta name="dj4e" content="735b90b4568125ed6c3f678819b6e058">
+
+<meta name="dj4e-code" content="42157133315370">
+
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+   crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+
+<meta name="dj4e-version" content="2020-04">
+
+</head>
+<body>
+ {%  if  not user.is_authenticated %}
+<div class="container">
+    
+<h1>DJ4E Sample Implementations</h1>
+<p>This is coming from a file in home/templates/main.html</p>
+
+<p><a href="/accounts/login/?next=/">Please log in</a></p> 
+
+<p>
+
+If you need an account to log in, you can try:
+<pre>Account: dj4e-crud
+Password: dj4e_nn_!
+</pre>
+Where "nn" is a number that should be quite easy to guess if you have been paying attention
+in class.
+</p>
+
+<h2>Hello World</h2>
+<p>A random cat picture (of course).</p>
+<p>
+<img src="https://loremflickr.com/160/120/cat"
+    alt="A random picture of a cat">
+</p>
+
+</div>
+{% else %}
+<div class="container">
+    
+    <h1>DJ4E Sample Implementations</h1>
+    <p>This is coming from a file in home/templates/main.html</p>
+    
+    <p>
+    <ul>
+        <li>Try <a href="autos">Autos Crud</a></li>
+        <li>Try <a href="cats">Cats Crud</a></li>
+    </ul>
+    </p>
+    <p><a href="/accounts/logout/?next=/">Logout</a></p>   
+    
+    <p>
+    
+    <h2>Hello World</h2>
+    <p>A random cat picture (of course).</p>
+    <p>
+    <img src="https://loremflickr.com/160/120/cat"
+        alt="A random picture of a cat">
+    </p>
+    
+
+
+{% endif %}
+</body>
+</html>
