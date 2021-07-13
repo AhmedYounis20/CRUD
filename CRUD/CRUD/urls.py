@@ -18,5 +18,6 @@ from django.urls import path, include
 from CR.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('CR.urls'))
+    path('',include('CR.urls')),
+    path('autos/',include('autos.urls'))
 ]

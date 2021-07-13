@@ -10,5 +10,4 @@ path('accounts/logout/',views.logoutView,name='logout'),
 
 
 
-
 ]
