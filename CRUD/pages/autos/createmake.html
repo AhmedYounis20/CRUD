@@ -8,10 +8,12 @@
 </head>
 <body>
     hi
- <form>
-     <table>
+ <form method="post">
+{% csrf_token %}
+    <table>
      {{form}}
     </table>
+    <input type="submit" name='submit'>
  </form>
 </body>
 </html>
