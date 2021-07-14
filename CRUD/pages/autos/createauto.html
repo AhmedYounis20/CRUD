@@ -33,28 +33,17 @@
  
 <div class="container">
     
-  <h1>Makes List</h1>
-  {% if makes|length > 0 %}
 
-  <ul>
-  {% for i in makes %}  
-      <li>
-          {{i.name}}
-         (<a href="/autos/lookup/{{i.id}}/update">Update</a> |
-          <a href="/autos/lookup/{{i.id}}/delete">Delete</a>)
-      </li>
-    {% endfor %}
-  </ul>
-  
-  <p><a href="/autos/lookup/create">Add a make</a></p>
-  <p>
-  <a href="/autos">Back to autos </a>
-  </p>
-  {% else %}
-  <p>There are no makes in the library.</p>
-
-
-  {% endif %}
+<p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{form}}
+    </table>
+    <input type="submit" value="Submit">
+    <input type="submit" onclick="window.location='/autos' ; return false;" value="Cancel">
+  </form>
+</p>
 
 </div>
 </body>

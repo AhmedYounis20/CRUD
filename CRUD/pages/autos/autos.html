@@ -35,15 +35,26 @@
     
 <h1>Autos List</h1>
   
+  {% if autos|length == 0 %}
   <p>There are no autos in the library.</p>
-  
+  {% else %}
+  <ul>
+    {% for auto in autos %}
+    <li>
+        {{auto}}
+        (<a href="/autos/main/1/update">Update</a> |
+        <a href="/autos/main/1/delete">Delete</a>)
+    </li>
+    {% endfor %}
+</ul>
+  {% endif %}
   <p>
     
-    <a href="/autos/main/create">Add an auto</a>
-    
+    {%  if makes|length %}<a href="/autos/main/create">Add an auto</a>
+    {% endif %}
   </p>
   <p>
-  <a href="/autos/lookup">View makes</a> (1) | 
+  <a href="/autos/lookup">View makes</a> ({{makes|length}}) | 
     <a href="/autos/lookup/create">Add a make</a>
   </p>
 
