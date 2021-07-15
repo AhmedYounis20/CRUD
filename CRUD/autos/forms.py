@@ -12,5 +12,5 @@ class makeForm(forms.ModelForm):
 class autoForm(forms.ModelForm):
     class Meta:
         model=auto
-        fields=['Nickname','Mileage','Comments','make']
+        fields=['nickname','mileage','comments','make']
     

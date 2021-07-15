@@ -5,9 +5,9 @@
     <!-- Edit samples/settings.py and add APP_NAME = 'DJ4E Samples' or similar -->
     <title></title>
 
-<meta name="dj4e" content="735b90b4568125ed6c3f678819b6e058">
+    <meta name="dj4e" content="e3fc72518f213ad1f39ed9306da322b0"> 
 
-<meta name="dj4e-code" content="42157133315370">
+    <meta name="dj4e-code" content="42162631057962">
 
 <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -34,21 +34,27 @@
 <div class="container">
     
   <h1>Breeds List</h1>
-  
+  {% if breeds|length > 0 %}
+
   <ul>
-    
+  {% for i in breeds %}  
       <li>
-          siamy
-         (<a href="/cats/lookup/1/update">Update</a> |
-          <a href="/cats/lookup/1/delete">Delete</a>)
+          {{i.Name}}
+         (<a href="/cats/lookup/{{i.id}}/update">Update</a> |
+          <a href="/cats/lookup/{{i.id}}/delete">Delete</a>)
       </li>
-    
+    {% endfor %}
   </ul>
   
   <p><a href="/cats/lookup/create">Add a breed</a></p>
   <p>
   <a href="/cats">Back to cats </a>
   </p>
+  {% else %}
+  <p>There are no breeds in the library.</p>
+
+
+  {% endif %}
 
 </div>
 </body>

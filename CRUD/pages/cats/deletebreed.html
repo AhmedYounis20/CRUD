@@ -34,30 +34,15 @@
 <div class="container">
     
 
+<h1>Delete Breed </h1>
 
-
-
-  {% if error %}
-  Your username and password didn't match. Please try again.
-  {%  endif  %}  
-  <p>Please login to see this site.</p>
-  
-
-
-<form method="post" action="/accounts/login/">
-{% csrf_token %}
-<table>
-    {{form}}
-
-</table>
-
-<input type="hidden" name="next" value="{{next}}" />
-<input type="submit" value="login" />
+<p>Are you sure you want to delete the breed : {{breed}}?</p>
+<p>
+<form action="" method="POST">
+{% csrf_token %}  
+<input type="submit" value="Yes, delete.">
 </form>
-
-
-<p><a href="/accounts/password_reset/">Lost password?</a></p>
-
+</p>
 
 </div>
 </body>

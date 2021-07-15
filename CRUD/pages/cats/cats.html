@@ -5,9 +5,9 @@
     <!-- Edit samples/settings.py and add APP_NAME = 'DJ4E Samples' or similar -->
     <title></title>
 
-<meta name="dj4e" content="735b90b4568125ed6c3f678819b6e058">
+    <meta name="dj4e" content="e3fc72518f213ad1f39ed9306da322b0"> 
 
-<meta name="dj4e-code" content="42157133315370">
+    <meta name="dj4e-code" content="42162631057962">
 
 <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -35,15 +35,31 @@
     
 <h1>Cats List</h1>
   
+  {% if cats|length == 0 %}
   <p>There are no cats in the library.</p>
-  
   <p>
     
     Please add a breed before you add a cat.
     
   </p>
+  {% else %}
+  <ul>
+    {% for cat in cats %}
+    <li>
+        {{cat}}
+        (<a href="/cats/main/{{cat.id}}/update">Update</a> |
+        <a href="/cats/main/{{cat.id}}/delete">Delete</a>)
+    </li>
+    {% endfor %}
+</ul>
+  {% endif %}
   <p>
-  <a href="/cats/lookup">View breeds</a> (0) | 
+    
+    {%  if breeds|length %}<a href="/cats/main/create">Add a cat</a>
+    {% endif %}
+  </p>
+  <p>
+  <a href="/cats/lookup">View breeds</a> ({{breeds|length}}) | 
     <a href="/cats/lookup/create">Add a breed</a>
   </p>
 

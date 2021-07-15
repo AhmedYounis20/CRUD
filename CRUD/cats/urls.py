@@ -1,7 +1,14 @@
 from django.urls import path
-
-from . import views 
+from . import views
 urlpatterns=[
-    path('',views.cats,name='cat'),
-    path('lookup/',views.lookup,name='lookup')
+    path('',views.cats),
+    path('lookup/',views.lookup,name='lookup'),
+    path('lookup/create/',views.createBreedView,name='createBreed'),
+    path('lookup/<int:id>/delete',views.deleteBreed,name='deleteBreed'),
+    path('lookup/<int:id>/update',views.updateBreed,name='updateBreed'),
+    path('main/create/',views.createCat,name="createCat"),
+    path('main/<int:id>/delete/',views.deleteCat,name='deleteCat'),
+    path('main/<int:id>/update/',views.updateCat,name='updateCat'),
+
+
 ]

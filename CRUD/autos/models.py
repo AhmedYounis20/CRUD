@@ -10,9 +10,9 @@ class make(models.Model):
 
         
 class auto(models.Model):
-    nickname=models.CharField(name="Nickname",max_length=100)
-    mileage=models.IntegerField(name="Mileage")
-    comments=models.CharField(name="Comments",max_length=100)
+    nickname=models.CharField(name="nickname",max_length=100)
+    mileage=models.IntegerField(name="mileage")
+    comments=models.CharField(name="comments",max_length=100)
     make=models.ForeignKey(to=make,on_delete=models.CASCADE)
     def __str__(self) -> str:
-        return self.Nickname+' ( '+str(self.make)+' )'
+        return self.nickname+' ( '+str(self.make)+' )'

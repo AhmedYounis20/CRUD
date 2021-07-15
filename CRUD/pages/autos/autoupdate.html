@@ -34,30 +34,16 @@
 <div class="container">
     
 
-
-
-
-  {% if error %}
-  Your username and password didn't match. Please try again.
-  {%  endif  %}  
-  <p>Please login to see this site.</p>
-  
-
-
-<form method="post" action="/accounts/login/">
-{% csrf_token %}
+<p>
+  <form action="" method="post">
+{% csrf_token %}    
 <table>
-    {{form}}
-
-</table>
-
-<input type="hidden" name="next" value="{{next}}" />
-<input type="submit" value="login" />
-</form>
-
-
-<p><a href="/accounts/password_reset/">Lost password?</a></p>
-
+  {{form }}
+    </table>
+    <input type="submit" value="Submit">
+    <input type="submit" onclick="window.location='/autos' ; return false;" value="Cancel">
+  </form>
+</p>
 
 </div>
 </body>

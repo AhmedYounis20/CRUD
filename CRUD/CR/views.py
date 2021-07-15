@@ -19,14 +19,15 @@ def loginView(request):
             user=authenticate(request,username=username,password=password)
             if user is not None:
                 login(request,user)
-                return redirect('/')
+                print(data['next'])
+                return redirect(data['next'])
             
         
         return render(request,'login.html',{'error':True,'form':form})
     else :
         form=loginForm()
         print(form.as_table())
-        return render(request,'login.html',{'error':False,'form':form})
+        return render(request,'login.html',{'next':request.GET['next'] ,'error':False,'form':form})
 
 def logoutView(request):
     logout(request)
