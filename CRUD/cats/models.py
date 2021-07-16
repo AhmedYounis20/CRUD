@@ -4,7 +4,7 @@ from django.db import models
 class breed(models.Model):
     name=models.CharField(name="name",max_length=100)
     def __str__(self) -> str:
-        return self.Name
+        return self.name
 class cat(models.Model):
     nickname=models.CharField(name='nickname',max_length=100)
     weight=models.IntegerField(name="weight")

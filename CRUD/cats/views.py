@@ -28,7 +28,7 @@ def createBreedView(request):
 @login_required(login_url='/accounts/login/')
 def deleteBreed(request,id):
     if request.method=="GET":
-        return render(request,'cats/deletebreed.html',{"breed":models.breed.objects.get(id=id).Name})
+        return render(request,'cats/deletebreed.html',{"breed":models.breed.objects.get(id=id).name})
     else:
         breed=models.breed.objects.get(id=id)
         breed.delete()
