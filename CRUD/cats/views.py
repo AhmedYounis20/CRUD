@@ -2,17 +2,18 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import breedForm,catForm
 from . import models
+from django.views.generic import ListView,UpdateView,CreateView
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+@login_required()
 def cats(request):
     return render(request,'cats/cats.html',{'cats':models.cat.objects.all(),'breeds':models.breed.objects.all()})
-@login_required(login_url='/accounts/login/')
+@login_required()
 
 def lookup(request):
     return render(request,'cats/lookup.html',{'breeds':models.breed.objects.all()})
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def createBreedView(request):
     if request.method=='GET':
         form=breedForm()
@@ -25,7 +26,7 @@ def createBreedView(request):
             return redirect('/cats/')
         return redirect(request.path)
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def deleteBreed(request,id):
     if request.method=="GET":
         return render(request,'cats/deletebreed.html',{"breed":models.breed.objects.get(id=id).name})
@@ -34,7 +35,7 @@ def deleteBreed(request,id):
         breed.delete()
         return redirect('/cats/')
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def updateBreed(request,id):
     if request.method =="GET":
 
@@ -56,7 +57,7 @@ def updateBreed(request,id):
         #     return render (request,'autos/makeupdate.html',{'form':form})
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def createCat(request):
     if request.method=='GET':
         form=catForm()
@@ -81,7 +82,7 @@ def createCat(request):
 
         return render(request,'cats/createcat.html',{'form':form})
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def deleteCat(request,id):
     if request.method=="GET":
         return render(request,'cats/deletecat.html',{"cat":models.cat.objects.get(id=id).nickname})
@@ -89,7 +90,7 @@ def deleteCat(request,id):
         cat=models.cat.objects.get(id=id)
         cat.delete()
         return redirect('/cats/')
-@login_required(login_url='/accounts/login/')
+@login_required()
 def updateCat(request,id):
 
     if request.method =="GET":
@@ -117,3 +118,14 @@ def updateCat(request,id):
             return render (request,'cats/createcat.html',{'form':form})
 
         return redirect('/cats/')
+
+
+
+class catListView(CreateView):
+    model=models.cat
+    fields=('nickname','weight','foods','breed')
+    template_name='cats/cat_list.html'
+class catUpdateView(UpdateView):
+    model=models.cat
+    fields=('nickname','weight','foods')
+    template_name='cats/cat_list.html'

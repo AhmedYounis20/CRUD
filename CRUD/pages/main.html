@@ -30,13 +30,15 @@
 
 </head>
 <body>
- {%  if  not user.is_authenticated %}
+  {% load app_tags %}
+  {%  if  not user.is_authenticated %}
 <div class="container">
-    
-<h1>DJ4E Sample Implementations</h1>
+
+  
+  <h1>DJ4E Sample Implementations</h1>
 <p>This is coming from a file in home/templates/main.html</p>
 
-<p><a href="/accounts/login/?next=/">Please log in</a></p> 
+<p><a href="{% url 'login' %}?next=/">Please log in</a></p> 
 
 <p>
 
@@ -58,6 +60,7 @@ in class.
 </div>
 {% else %}
 <div class="container">
+  {% avatar user %}
     
     <h1>DJ4E Sample Implementations</h1>
     <p>This is coming from a file in home/templates/main.html</p>

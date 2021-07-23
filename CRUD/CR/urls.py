@@ -3,10 +3,13 @@ from django.urls.resolvers import URLPattern
 from . import views 
 
 urlpatterns=[
+path('',views.articleListView.as_view(),name='CR'),
 
-path('',views.main,name='index'),
-path('accounts/login/',views.loginView,name='login'),
-path('accounts/logout/',views.logoutView,name='logout'),
+path('create',views.articleCreateView.as_view(),name='index'),
+path('update/<int:pk>',views.articleUpdateView.as_view(),name='index'),
+
+path('detail/<int:pk>',views.articleDetailView.as_view(),name='index'),
+
 
 
 

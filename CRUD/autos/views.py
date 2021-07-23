@@ -4,15 +4,15 @@ from django.http import HttpResponse
 from .forms import makeForm,autoForm
 from . import models
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+@login_required()
 def autos(request):
     return render(request,'autos/autos.html',{'autos':models.auto.objects.all(),'makes':models.make.objects.all()})
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def lookup(request):
     return render(request,'autos/lookup.html',{'makes':models.make.objects.all()})
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def createMakeView(request):
     if request.method=='GET':
         form=makeForm()
@@ -25,7 +25,7 @@ def createMakeView(request):
             return redirect('/autos/')
         return redirect(request.path)
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def deleteMake(request,id):
     if request.method=="GET":
         return render(request,'autos/deletemake.html',{"make":models.make.objects.get(id=id).name})
@@ -34,7 +34,7 @@ def deleteMake(request,id):
         make.delete()
         return redirect('/autos/')
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def updateMake(request,id):
     if request.method !="POST":
 
@@ -55,7 +55,7 @@ def updateMake(request,id):
         #     return render (request,'autos/makeupdate.html',{'form':form})
 
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def createAuto(request):
     if request.method=='GET':
         form=autoForm()
@@ -82,7 +82,7 @@ def createAuto(request):
             return HttpResponse(str(form.errors))
             # return render(request,'autos/createauto.html',{'form':form})
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def deleteAuto(request,id):
     if request.method=="GET":
         return render(request,'autos/deleteAuto.html',{"Auto":models.auto.objects.get(id=id).nickname})
@@ -91,7 +91,7 @@ def deleteAuto(request,id):
         auto.delete()
         return redirect('/autos/')
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def updateAuto(request,id):
 
     if request.method =="GET":
