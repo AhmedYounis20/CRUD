@@ -1,0 +1,46 @@
+{% extends "base_menu.html" %}
+{% load static %}
+
+>{% block links %} 
+<link rel="stylesheet" href="{% static 'ad_form.css' %}">
+<meta name="dj4e" content="e3fc72518f213ad1f39ed9306da322b0">
+
+
+{% endblock %}
+{% block content %}
+    {% for ad in ad_list %}
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="media g-mb-30 media-comment">
+                <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+
+            
+                  <p><a href="/ads/ad/{{ad.id}}"><h2>{{ad.title}}</h2></a>
+                  </p>
+                  <div class="g-mb-15">
+                    <span class="g-color-gray-dark-v4 g-font-size-12">{{ ad.updated_at|timesince }} ago </span>
+                  </div>
+                  <ul class="list-inline d-sm-flex my-0">
+                
+                    <li class="list-inline-item ml-auto">
+                        <div class="btn-actions " >
+                            {% if request.user == ad.owner %}
+                            <a href='/ads/ad/{{ad.id}}/update'" class="single-btn btn btn-secondary">edit</a>
+                            <a href='/ads/ad/{{ad.id}}/delete'" class="single-btn btn btn-danger"> delete</a>
+                            {% endif %}
+                            </div>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    
+        
+    </div>
+
+    
+
+    {% endfor %}
+{% endblock %}

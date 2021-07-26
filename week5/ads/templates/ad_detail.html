@@ -1,0 +1,45 @@
+{% extends "base_menu.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/post_details.css' %}">
+<meta name="dj4e" content="e3fc72518f213ad1f39ed9306da322b0">
+
+{% endblock  %}
+{% block content %}
+
+<h1 class="posttitle "  >
+{{ad.title}}
+</h1>
+<div id='middle_column'>
+<p class=" postcontent " >
+{{ad.text}}
+</p>
+</div>
+<div class="postinfo">
+<p> author: {{ad.owner}} </p>
+
+<p> created: {{ad.created_at}}</p>
+
+<p>
+   updated : {{ad.updated_at}}
+</p>
+
+</div>
+{% if request.user == ad.owner  or  request.user.is_superuser %}
+
+<div class="btn-actions " >
+<button onclick="window.location='/ads/ad/{{ad.id}}/update'" class="single-btn btn btn-secondary">edit</button>
+<button onclick="window.location='/ads/ad/{{ad.id}}/delete'" class="single-btn btn btn-danger"> delete</button>
+</div>
+
+
+
+
+{% endif %}
+
+
+
+
+
+
+{% endblock %}

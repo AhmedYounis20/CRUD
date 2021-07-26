@@ -1,0 +1,29 @@
+{% extends "base_menu.html" %}
+{% load static %}
+>{% block links %} 
+<link rel="stylesheet" href="{% static 'ad_form.css' %}">
+<meta name="dj4e" content="e3fc72518f213ad1f39ed9306da322b0">
+
+
+{% endblock %}
+
+{% block content %}
+<h1>
+    {{ form.subject.errors }}
+    {{ form.subject.label_tag }}
+    {{ form.subject }} 
+    {% if not form.instance.pk %} 
+    Create Ad 
+    {% else %} 
+    Update Ad 
+    {% endif %} 
+
+</h1>
+<form  method="post" >
+    <div class= 'formgroup'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary"   value="Submit"  />
+</div>
+</form>
+{% endblock %}

@@ -1,0 +1,38 @@
+
+{% extends "base_menu.html" %}
+{% load static %}
+
+>{% block links %} 
+<link rel="stylesheet" href="{% static 'ad_form.css' %}">
+<meta name="dj4e" content="e3fc72518f213ad1f39ed9306da322b0">
+
+
+{% endblock %}
+{% block content %}
+
+<h1>
+
+    do you really want to delete  {{Ad}} ad ?!
+
+
+
+</h1>
+<table>
+
+
+    <tr>
+        <td>
+            <form action="" method="post">
+                {%csrf_token%}
+                <input type="submit"   class='btn btn-danger' style='margin: 10px;'  value="Yes, delete.">
+            
+            </form>
+        </td>
+        <td>
+            <button onclick="window.location='/ads'" class='btn btn-secondary'>cancel</button>
+
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
